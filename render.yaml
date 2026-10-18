@@ -1,0 +1,18 @@
+# Render Blueprint: Render reads this when you connect the GitHub repo (New > Blueprint).
+# The database lives on Neon; paste its connection string into DATABASE_URL when Render asks.
+services:
+  - type: web
+    name: fittrack-api
+    runtime: docker
+    plan: free
+    rootDir: backend
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /health
+    autoDeploy: true
+    envVars:
+      - key: DATABASE_URL
+        sync: false
+      - key: JWT_SECRET
+        generateValue: true
+      - key: CORS_ORIGINS
+        value: http://localhost:5173,http://localhost:8081

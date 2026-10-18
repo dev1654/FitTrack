@@ -1,0 +1,24 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.ruff_cache/
+
+# Env files (keep the .example ones)
+.env
+.env.*
+!.env.example
+
+# Node / Expo
+node_modules/
+dist/
+.expo/
+web-build/
+
+# Editors / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

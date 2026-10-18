@@ -1,0 +1,39 @@
+name: Backend CI
+
+on:
+  push:
+    paths: ["backend/**", ".github/workflows/backend-ci.yml"]
+  pull_request:
+    paths: ["backend/**"]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_USER: fittrack
+          POSTGRES_PASSWORD: fittrack
+          POSTGRES_DB: fittrack_test
+        ports: ["5432:5432"]
+        options: >-
+          --health-cmd "pg_isready -U fittrack" --health-interval 3s --health-timeout 3s --health-retries 20
+    defaults:
+      run:
+        working-directory: backend
+    env:
+      DATABASE_URL: postgresql://fittrack:fittrack@localhost:5432/fittrack_test
+      TEST_DATABASE_URL: postgresql://fittrack:fittrack@localhost:5432/fittrack_test
+      JWT_SECRET: ci-only-secret-not-used-anywhere-else
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: backend/requirements-dev.txt
+      - run: pip install -r requirements-dev.txt
+      - name: Migrations apply cleanly and match the models
+        run: alembic upgrade head && alembic check
+      - run: pytest

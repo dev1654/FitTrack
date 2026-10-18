@@ -1,0 +1,4 @@
+# Keep shell scripts and Python files with LF endings so they run inside Docker on Windows.
+* text=auto eol=lf
+*.png binary
+*.jpg binary
