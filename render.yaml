@@ -5,8 +5,10 @@ services:
     name: fittrack-api
     runtime: docker
     plan: free
-    rootDir: backend
-    dockerfilePath: ./Dockerfile
+    region: ohio                  # keep next to the Neon database (AWS us-east-2, Ohio)
+    rootDir: backend              # only redeploy when backend/ changes
+    dockerfilePath: ./backend/Dockerfile   # Docker paths are relative to the repo root
+    dockerContext: ./backend
     healthCheckPath: /health
     autoDeploy: true
     envVars:
