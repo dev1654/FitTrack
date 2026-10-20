@@ -1,0 +1,11 @@
+{
+  "name": "fittrack",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "api:generate": "npm run generate -w @fittrack/api-client",
+    "api:typecheck": "npm run typecheck -w @fittrack/api-client"
+  }
+}

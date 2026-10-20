@@ -1,0 +1,604 @@
+[
+ {
+  "id": 9,
+  "uuid": "1b020b3a-3732-4c7e-92fd-a0cec90ed69b",
+  "category": {
+   "id": 10,
+   "name": "Abs"
+  },
+  "muscles": [],
+  "muscles_secondary": [],
+  "equipment": [
+   {
+    "id": 10,
+    "name": "Kettlebell"
+   }
+  ],
+  "translations": [
+   {
+    "id": 345,
+    "uuid": "c788d643-150a-4ac7-97ef-84643c6419bf",
+    "name": "2 Handed Kettlebell Swing",
+    "exercise": 9,
+    "description": "<p>Two Handed Russian Style Kettlebell swing</p>\n",
+    "language": 2
+   }
+  ]
+ },
+ {
+  "id": 12,
+  "uuid": "53906cd1-61f1-4d56-ac60-e4fcc5824861",
+  "category": {
+   "id": 9,
+   "name": "Legs"
+  },
+  "muscles": [
+   {
+    "id": 8,
+    "name": "Gluteus maximus",
+    "name_en": "Glutes",
+    "is_front": false
+   }
+  ],
+  "muscles_secondary": [],
+  "equipment": [],
+  "translations": [
+   {
+    "id": 174,
+    "uuid": "99881bdd-43d7-4c3b-82ed-9c187d0455b7",
+    "name": "Adduktoren-Maschine",
+    "exercise": 12,
+    "description": "<ul>\n<li>in eine aufrechte Position setzen, bei der die Beine hüftbreit geöffnet sind</li>\n<li>den Rücken, die Knie und die Oberschenkelaußenseite an die jeweiligen Polster pressen</li>\n<li>mit den Händen an den Griffen festhalten</li>\n<li>die Oberschenkel bis zum Anschlagpunkt der Hebelarme auseinander drücken</li>\n<li>danach die Beine wieder zusammen führen</li>\n<li>das Gesäß nicht vom Sitz abheben</li>\n<li>beim Auseinanderdrücken der Hebelarme aus- und beim Zusammenführen einatmen</li>\n</ul>\n",
+    "language": 1
+   },
+   {
+    "id": 377,
+    "uuid": "4b3025a9-b717-4577-9e92-b1c200fe5f1c",
+    "name": "Seated Hip Adduction",
+    "exercise": 12,
+    "description": "<p>Starting Position: Sit on the machine with your knees inward and against the pads. Pull the pin to release the pads. Grab the handles on the sides.b</p>\n",
+    "language": 2
+   }
+  ]
+ },
+ {
+  "id": 20,
+  "uuid": "f24cb758-9c0d-42d4-ad9e-6025c527dd13",
+  "category": {
+   "id": 13,
+   "name": "Shoulders"
+  },
+  "muscles": [],
+  "muscles_secondary": [],
+  "equipment": [
+   {
+    "id": 3,
+    "name": "Dumbbell"
+   }
+  ],
+  "translations": [
+   {
+    "id": 227,
+    "uuid": "53ca25b3-61d9-4f72-bfdb-492b83484ff5",
+    "name": "Arnold Shoulder Press",
+    "exercise": 20,
+    "description": "<p>Very common shoulder exercise.</p>\n<p>As shown here:&nbsp;https://www.youtube.com/watch?v=vj2w851ZHRM</p>\n",
+    "language": 2
+   },
+   {
+    "id": 228,
+    "uuid": "880bff63-6798-4ffc-a818-b2a1ccfec0f7",
+    "name": "Arnold Press",
+    "exercise": 20,
+    "description": "<p>Zwei Kurzhanteln mit den Handflächen nach innen vor der Brust halten, Ellbogen unterhalb der Handgelenke.</p>\n<p>Ellbogen nach außen bringen und Hanteln über den Kopf heben. Drehung kommt aus dem Ellbogen, nicht aus den Armen!</p>\n<p>Wenn die Arme durchgestreckt sind, die gleiche Bewegung rückwärts ausführen.</p>\n",
+    "language": 1
+   }
+  ]
+ },
+ {
+  "id": 31,
+  "uuid": "f2733700-aa5d-4df7-bc52-1876ab4fb479",
+  "category": {
+   "id": 8,
+   "name": "Arms"
+  },
+  "muscles": [],
+  "muscles_secondary": [],
+  "equipment": [
+   {
+    "id": 3,
+    "name": "Dumbbell"
+   }
+  ],
+  "translations": [
+   {
+    "id": 289,
+    "uuid": "6add5973-86d0-4543-928a-6bb8b3f34efc",
+    "name": "Axe Hold",
+    "exercise": 31,
+    "description": "<p>Grab dumbbells and extend arms to side and hold as long as you can</p>\n",
+    "language": 2
+   },
+   {
+    "id": 677,
+    "uuid": "8e9d8968-323d-468c-9174-8cf11a105fad",
+    "name": "Axe Hold",
+    "exercise": 31,
+    "description": "<p>Nehmen Sie die Hanteln und strecken Sie die Arme zur Seite. Halten Sie sie so lange wie möglich.</p>\n",
+    "language": 1
+   }
+  ]
+ },
+ {
+  "id": 41,
+  "uuid": "a6bced3c-72f5-42a3-9438-5569d46f49fd",
+  "category": {
+   "id": 10,
+   "name": "Abs"
+  },
+  "muscles": [
+   {
+    "id": 14,
+    "name": "Obliquus externus abdominis",
+    "name_en": "",
+    "is_front": true
+   }
+  ],
+  "muscles_secondary": [],
+  "equipment": [
+   {
+    "id": 1,
+    "name": "Barbell"
+   }
+  ],
+  "translations": [
+   {
+    "id": 343,
+    "uuid": "1b9dc5bc-790b-4e21-a55d-f8b3115e94c5",
+    "name": "Barbell Ab Rollout",
+    "exercise": 41,
+    "description": "<p>Place a barbell on the floor at your feet.</p>\n<p>Bending at the waist, grip the barbell with a shoulder with overhand grip.</p>\n<p>With a slow controlled motion, roll the bar out so that your back is straight.</p>\n<p>Roll back up raising your hips and butt as you return to the starting position.</p>\n",
+    "language": 2
+   }
+  ]
+ },
+ {
+  "id": 57,
+  "uuid": "b7267f90-8706-442b-b918-507e16092b8e",
+  "category": {
+   "id": 11,
+   "name": "Chest"
+  },
+  "muscles": [
+   {
+    "id": 2,
+    "name": "Anterior deltoid",
+    "name_en": "Shoulders",
+    "is_front": true
+   },
+   {
+    "id": 7,
+    "name": "Gastrocnemius",
+    "name_en": "Calves",
+    "is_front": false
+   },
+   {
+    "id": 4,
+    "name": "Pectoralis major",
+    "name_en": "Chest",
+    "is_front": true
+   },
+   {
+    "id": 6,
+    "name": "Rectus abdominis",
+    "name_en": "Abs",
+    "is_front": true
+   },
+   {
+    "id": 3,
+    "name": "Serratus anterior",
+    "name_en": "",
+    "is_front": true
+   },
+   {
+    "id": 15,
+    "name": "Soleus",
+    "name_en": "",
+    "is_front": false
+   },
+   {
+    "id": 5,
+    "name": "Triceps brachii",
+    "name_en": "Triceps",
+    "is_front": false
+   }
+  ],
+  "muscles_secondary": [
+   {
+    "id": 8,
+    "name": "Gluteus maximus",
+    "name_en": "Glutes",
+    "is_front": false
+   },
+   {
+    "id": 12,
+    "name": "Latissimus dorsi",
+    "name_en": "Lats",
+    "is_front": false
+   },
+   {
+    "id": 14,
+    "name": "Obliquus externus abdominis",
+    "name_en": "",
+    "is_front": true
+   },
+   {
+    "id": 10,
+    "name": "Quadriceps femoris",
+    "name_en": "Quads",
+    "is_front": true
+   },
+   {
+    "id": 9,
+    "name": "Trapezius",
+    "name_en": "",
+    "is_front": false
+   }
+  ],
+  "equipment": [
+   {
+    "id": 7,
+    "name": "none (bodyweight exercise)"
+   }
+  ],
+  "translations": [
+   {
+    "id": 307,
+    "uuid": "1b8b1657-40fd-4e3b-97b7-1c79b1079f8e",
+    "name": "Bear Walk 2",
+    "exercise": 57,
+    "description": "<p>-Rest your weight on your palms and the balls of your feet, not dissimilar to normal pushup position</p>\n<p>-Move by stepping with your R palm and L foot, then your L palm and R foot.&nbsp; Basically, walk like a lumbering bear.</p>\n<p>-Move as fast as you can.&nbsp; Measure your reps/sets in either distance (i.e. 40 yards) or time (i.e. 45 seconds)</p>\n<p>-Works your Pecs, Deltoids, Triceps, Traps, Lats, Abs and Lower Back, Hip Flexors, Quads, Glutes and Calves</p>\n",
+    "language": 2
+   },
+   {
+    "id": 718,
+    "uuid": "e4b3da5b-1803-42af-a50e-ffbac3853cd0",
+    "name": "Bear Walk",
+    "exercise": 57,
+    "description": "<p>-Stützen Sie Ihr Gewicht auf Ihren Handflächen und Ihren Füßen, nicht anders als in der normalen Liegestützposition</p>\n<ul>\n<li>Bewegen Sie sich, indem Sie mit der R-Handfläche und dem L-Fuß, dann mit der L-Handfläche und dem R-Fuß treten. Gehen Sie im Grunde wie ein trampelnder Bär.</li>\n</ul>\n<p>-Bewegen Sie sich so schnell wie möglich. Messen Sie Ihre Wiederholungen / Sätze entweder in der Entfernung (d. H. 40 Meter) oder in der Zeit (d. H. 45 Sekunden).</p>\n<p>-Arbeitet an Pecs, Deltamuskeln, Trizeps, Trapezius, Lats, Abs und Lendenwirbelsäule, Hüftbeugern, Quads, Gesäßmuskeln und Waden</p>\n",
+    "language": 1
+   }
+  ]
+ },
+ {
+  "id": 84,
+  "uuid": "2f0ddf9a-f520-4c55-8883-f0d4a789f481",
+  "category": {
+   "id": 12,
+   "name": "Back"
+  },
+  "muscles": [
+   {
+    "id": 12,
+    "name": "Latissimus dorsi",
+    "name_en": "Lats",
+    "is_front": false
+   }
+  ],
+  "muscles_secondary": [
+   {
+    "id": 2,
+    "name": "Anterior deltoid",
+    "name_en": "Shoulders",
+    "is_front": true
+   },
+   {
+    "id": 1,
+    "name": "Biceps brachii",
+    "name_en": "Biceps",
+    "is_front": true
+   }
+  ],
+  "equipment": [
+   {
+    "id": 1,
+    "name": "Barbell"
+   }
+  ],
+  "translations": [
+   {
+    "id": 110,
+    "uuid": "77688310-f2cf-4d37-a854-dca906387be7",
+    "name": "Bent Over Rowing Reverse",
+    "exercise": 84,
+    "description": "<p>The same as <em>regular</em> rowing, but holding a reversed grip (your palms pointing forwards):</p>\n<p>Grab the barbell with a wide grIp (slightly more than shoulder wide) and lean forward. Your upper body is not quite parallel to the floor, but forms a slight angle. The chest's out during the whole exercise.</p>\n<p>Pull now the barbell with a fast movement towards your belly button, not further up. Go slowly down to the initial position. Don't swing with your body and keep your arms next to your body.</p>\n",
+    "language": 2
+   },
+   {
+    "id": 3086,
+    "uuid": "256d6a59-2ace-4f45-8835-0ea5e3c938d0",
+    "name": "Rudern Vorgebeugt LH Reverse",
+    "exercise": 84,
+    "description": "<p>Bewegungsablauf wie beim normalen vorgebeugtem Rudern, nur die Handstellung ist <em>reverse</em>, also die Handfläche zeigen nach hinten.</p>\n<p>Greife die Langhantel mit breitem (etwas mehr als Schulterbreit)\nGriff und beuge dich nach vorne. Dabei ist der Oberkörper nicht ganz\nWaagerecht, sonder ein bisschen steiler, der Kopf schaut nach vorn und\ndie Brust is rausgestreckt.</p>\n<p>Ziehe nun das Gewicht in richtung Bauchnabel. Schwinge während der\nBewegung den Oberkörper nicht und halte die Arme dicht am Körper wenn du\nsie hochziehst. Bringe die Hantel langsam wieder nach unten</p>\n",
+    "language": 1
+   }
+  ]
+ },
+ {
+  "id": 94,
+  "uuid": "42227131-9b1e-4220-b082-c523f0651057",
+  "category": {
+   "id": 8,
+   "name": "Arms"
+  },
+  "muscles": [
+   {
+    "id": 1,
+    "name": "Biceps brachii",
+    "name_en": "Biceps",
+    "is_front": true
+   }
+  ],
+  "muscles_secondary": [
+   {
+    "id": 13,
+    "name": "Brachialis",
+    "name_en": "",
+    "is_front": true
+   }
+  ],
+  "equipment": [
+   {
+    "id": 2,
+    "name": "SZ-Bar"
+   }
+  ],
+  "translations": [
+   {
+    "id": 44,
+    "uuid": "8277124a-9ef2-442a-9824-7ab4439a5f1f",
+    "name": "Bizeps Curls Mit SZ-Stange",
+    "exercise": 94,
+    "description": "<p>Halte die Hantel mit etwa schulterbreitem Griff, die Arme sind ausgestreckt. Beuge die Arme und brige die Hantel mit einer schnellen Bewegung nach oben. Ohne Pause wird das Gewicht nun kontrolliert nach unten gebracht. Beachte, dass die Bewegung nach oben schneller ist als nach unten.</p>\n<p>Während des Bewegungablaufs darf der Körper nicht mitschwingen. Die Ellenbogen bleiben dabei immer an der Stelle.</p>\n",
+    "language": 1
+   },
+   {
+    "id": 80,
+    "uuid": "38919515-ce04-4383-9c3f-5846edd0e844",
+    "name": "Biceps Curls With SZ-bar",
+    "exercise": 94,
+    "description": "<p>Hold the SZ-bar shoulder-wide, the back is straight, the shoulders slightly back, the arms are streched. Bend the arms, bringing the weight up, with a fast movement. Without pausing, let down the bar with a slow and controlled movement.</p>\n<p>Don't allow your body to swing during the exercise, all work is done by the biceps, which are the only mucles that should move (pay attention to the elbows).</p>\n",
+    "language": 2
+   }
+  ]
+ },
+ {
+  "id": 152,
+  "uuid": "87e6abc5-a701-442a-b4fb-bb2a7598a754",
+  "category": {
+   "id": 12,
+   "name": "Back"
+  },
+  "muscles": [],
+  "muscles_secondary": [],
+  "equipment": [
+   {
+    "id": 6,
+    "name": "Pull-up bar"
+   }
+  ],
+  "translations": [
+   {
+    "id": 803,
+    "uuid": "0849d95d-e83b-44bd-ae95-1fcb89fa5a04",
+    "name": "Chin Up",
+    "exercise": 152,
+    "description": "<p>The chin-up (also known as a chin or chinup) is a strength training exercise. People frequently do this exercise with the intention of strengthening muscles such as the latissimus dorsi and biceps, which extend the shoulder and flex the elbow, respectively. In this maneuver, the palms are faced towards the body. It is a form of pull-up in which the range of motion is established in relation to a person's chin.</p>\n",
+    "language": 2
+   }
+  ]
+ },
+ {
+  "id": 177,
+  "uuid": "8dedde58-a5dc-4a23-ad20-fd7cf524f8b5",
+  "category": {
+   "id": 15,
+   "name": "Cardio"
+  },
+  "muscles": [
+   {
+    "id": 14,
+    "name": "Obliquus externus abdominis",
+    "name_en": "",
+    "is_front": true
+   },
+   {
+    "id": 9,
+    "name": "Trapezius",
+    "name_en": "",
+    "is_front": false
+   }
+  ],
+  "muscles_secondary": [
+   {
+    "id": 11,
+    "name": "Biceps femoris",
+    "name_en": "Hamstrings",
+    "is_front": false
+   },
+   {
+    "id": 13,
+    "name": "Brachialis",
+    "name_en": "",
+    "is_front": true
+   },
+   {
+    "id": 8,
+    "name": "Gluteus maximus",
+    "name_en": "Glutes",
+    "is_front": false
+   },
+   {
+    "id": 12,
+    "name": "Latissimus dorsi",
+    "name_en": "Lats",
+    "is_front": false
+   },
+   {
+    "id": 10,
+    "name": "Quadriceps femoris",
+    "name_en": "Quads",
+    "is_front": true
+   }
+  ],
+  "equipment": [
+   {
+    "id": 7,
+    "name": "none (bodyweight exercise)"
+   }
+  ],
+  "translations": [
+   {
+    "id": 806,
+    "uuid": "035d5dfc-1a1b-480b-bc9b-b6f634f19aee",
+    "name": "Cycling",
+    "exercise": 177,
+    "description": "<p>Cycling, also called bicycling or biking, is the use of bicycles for transport, recreation, exercise or sport. People engaged in cycling are referred to as cyclists, bicyclists, or bikers. Apart from two-wheeled bicycles, cycling also includes the riding of unicycles, tricycles, quadracycles, recumbent and similar human-powered vehicles.</p>\n",
+    "language": 2
+   },
+   {
+    "id": 1065,
+    "uuid": "74466d9b-7658-49b5-8127-c91a70fd2307",
+    "name": "Fahrrad fahren",
+    "exercise": 177,
+    "description": "",
+    "language": 1
+   }
+  ]
+ },
+ {
+  "id": 193,
+  "uuid": "14d5cdbc-9b17-4296-a282-0a81cd3c4c4e",
+  "category": {
+   "id": 13,
+   "name": "Shoulders"
+  },
+  "muscles": [],
+  "muscles_secondary": [],
+  "equipment": [
+   {
+    "id": 8,
+    "name": "Bench"
+   }
+  ],
+  "translations": [
+   {
+    "id": 329,
+    "uuid": "ee291ad5-2064-4d0a-b252-c715f362e035",
+    "name": "Diagonal Shoulder Press",
+    "exercise": 193,
+    "description": "<p>You sit at the bench press device, back slightly tilted to the back. The bar should be about 20 cm in front of you. Then you push the bar and take it back again, as you would with a bench press.</p>\n<p>In this position you strain your chest muscles a lot less, which is nice if you want to train, but your chest hasn't recovered yet.</p>\n<p>Here's a link to a girl on a machine specialized for this exercise, to give a better description than my failing words above.</p>\n<p>http://www.schnell-online.de/db_imgs/products/img/t-80400.jpg</p>\n",
+    "language": 2
+   }
+  ]
+ },
+ {
+  "id": 308,
+  "uuid": "55ff32e6-24ab-4303-9b50-176d60d48796",
+  "category": {
+   "id": 11,
+   "name": "Chest"
+  },
+  "muscles": [
+   {
+    "id": 4,
+    "name": "Pectoralis major",
+    "name_en": "Chest",
+    "is_front": true
+   }
+  ],
+  "muscles_secondary": [],
+  "equipment": [
+   {
+    "id": 3,
+    "name": "Dumbbell"
+   },
+   {
+    "id": 9,
+    "name": "Incline bench"
+   }
+  ],
+  "translations": [
+   {
+    "id": 73,
+    "uuid": "3b34d81d-7882-46a6-bb83-40f84d3f8300",
+    "name": "Fliegende KH Schrägbank",
+    "exercise": 308,
+    "description": "<p>Greife zwei Kurzhanteln und lege dich auf eine Schrägbank und strecke die Arme schulterbreit vollständig aus. Füße, Rücken und Kopf liegen fest auf Boden/Bank und geben Halt. Beuge nun leicht die Arme am Ellenbogengelenk und lasse sie mit einer Halbkreisbewegung seitlich runter. Ohne diesen Winkel zu verändern bringe sie wieder nach oben.</p>\n",
+    "language": 1
+   },
+   {
+    "id": 206,
+    "uuid": "7327ab51-7073-4c84-9e3f-2e83af40e96c",
+    "name": "Incline Dumbbell Fly",
+    "exercise": 308,
+    "description": "<p>Use inclined bench. Hold dumbbells straight out to your sides, elbows slightly bent. Bring arms together above you, keeping angle of elbows fixed.</p>\n",
+    "language": 2
+   }
+  ]
+ },
+ {
+  "id": 525,
+  "uuid": "d9e306b6-d6ff-4e61-b283-4b085d8edaaf",
+  "category": {
+   "id": 12,
+   "name": "Back"
+  },
+  "muscles": [
+   {
+    "id": 12,
+    "name": "Latissimus dorsi",
+    "name_en": "Lats",
+    "is_front": false
+   }
+  ],
+  "muscles_secondary": [
+   {
+    "id": 2,
+    "name": "Anterior deltoid",
+    "name_en": "Shoulders",
+    "is_front": true
+   },
+   {
+    "id": 1,
+    "name": "Biceps brachii",
+    "name_en": "Biceps",
+    "is_front": true
+   }
+  ],
+  "equipment": [
+   {
+    "id": 1,
+    "name": "Barbell"
+   }
+  ],
+  "translations": [
+   {
+    "id": 70,
+    "uuid": "5da0cb07-6e05-4ca5-95e2-e44ad67e6757",
+    "name": "Rudern Vorgebeugt LH Reverse",
+    "exercise": 525,
+    "description": "<p>Bewegungsablauf wie beim normalen vorgebeugtem Rudern, nur die Handstellung ist <em>reverse</em>, also die Handfläche zeigen nach hinten.</p>\n<p>Greife die Langhantel mit breitem (etwas mehr als Schulterbreit) Griff und beuge dich nach vorne. Dabei ist der Oberkörper nicht ganz Waagerecht, sonder ein bisschen steiler, der Kopf schaut nach vorn und die Brust is rausgestreckt.</p>\n<p>Ziehe nun das Gewicht in richtung Bauchnabel. Schwinge während der Bewegung den Oberkörper nicht und halte die Arme dicht am Körper wenn du sie hochziehst. Bringe die Hantel langsam wieder nach unten.</p>\n",
+    "language": 1
+   },
+   {
+    "id": 1045,
+    "uuid": "eb993d85-14b9-48b1-b03a-05ed3d198e03",
+    "name": "Bent Over Rowing Reverse",
+    "exercise": 525,
+    "description": "",
+    "language": 2
+   }
+  ]
+ }
+]

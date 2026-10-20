@@ -5,10 +5,11 @@ a React web dashboard and an Expo mobile app, all sharing one PostgreSQL databas
 
 | Folder | What's in it | Status |
 | --- | --- | --- |
-| `backend/` | FastAPI API, SQLAlchemy models, Alembic migrations, seed data, tests | Week 1 done |
+| `backend/` | FastAPI API, models, migrations, seed data, tests | Week 1 done |
+| `backend/app/pipeline/` | wger catalog sync + nightly analytics jobs | Week 2 done |
+| `packages/api-client/` | Typed TypeScript client generated from the API schema | Week 2 done |
 | `web/` | React + TypeScript + Vite dashboard | Week 3 |
 | `mobile/` | Expo (React Native) in-gym logger | Week 4 |
-| `packages/api-client/` | TypeScript types generated from the API schema | Week 2 |
 
 ## Run it locally
 
@@ -57,14 +58,44 @@ whether to display kg or lb.
 | Templates | `GET /templates` (built-in programs + yours), `GET/PUT/DELETE /templates/{id}`, `POST /templates`, `POST /sessions/{id}/save-as-template` |
 | Sessions | `GET/POST /sessions`, `GET/PATCH/DELETE /sessions/{id}`, `POST /sessions/{id}/sets`, `PATCH/DELETE /sets/{id}` |
 | Body metrics | `GET /body-metrics`, `PUT /body-metrics` (one entry per day), `DELETE /body-metrics/{id}` |
+| Progress | `GET /exercises/{id}/last` (last session's sets + next target), `GET /stats/exercises/{id}` (1RM/volume trend), `GET /stats/weekly-volume`, `GET /stats/prs`, `GET /stats/plateaus` |
+| Pipeline | `GET /pipeline/runs` (recent job runs and their results) |
 | Health | `GET /health` (also checks the database) |
 
 ## Data model
 
-Nine tables: `users`, `equipment`, `exercises`, `workout_templates`, `template_exercises`,
-`workout_sessions`, `set_entries`, `body_metrics`, `exercise_stats`.
+Ten tables: `users`, `equipment`, `exercises`, `workout_templates`, `template_exercises`,
+`workout_sessions`, `set_entries`, `body_metrics`, `exercise_stats`, `pipeline_runs`.
 Built-in programs are templates with no owner (`user_id` is null). `exercise_stats` is filled
-by the nightly analytics job (week 2).
+by the nightly analytics job; `pipeline_runs` logs every job run.
+
+## Data pipeline
+
+Two scheduled jobs run on GitHub Actions against the production database:
+
+| Job | Schedule | What it does |
+| --- | --- | --- |
+| Catalog sync (`app/pipeline/catalog_sync.py`) | Mondays 06:17 UTC | Pages through wger's `/exerciseinfo/` API, keeps the English name, strips HTML from instructions, maps wger muscles and equipment onto FitTrack's, and upserts on `(source, external_id)`. Unchanged rows aren't rewritten. |
+| Analytics (`app/pipeline/analytics.py`) | Daily 07:43 UTC | Reads every strength set with pandas, computes each day's best estimated 1RM (Epley: weight × (1 + reps/30)), total volume, and a plateau flag (no new best in the last 3 sessions), and rebuilds `exercise_stats` in one transaction. |
+
+Data quality checks:
+
+- **Validation:** records without an English name, a usable name, a uuid or a muscle group are skipped, and so are duplicate names and names already in the seed catalog. Each skip is counted by reason.
+- **Circuit breaker:** if wger returns fewer than 200 exercises, the sync stops without writing anything.
+- **Retries:** network errors, 429s and 5xx responses are retried with exponential backoff.
+- **Run log:** every run is recorded in `pipeline_runs` with its counts or its error, visible at `GET /pipeline/runs`.
+
+Tested against all 872 real wger exercises, a sync imports 831 and skips 41 duplicates in under a second. A second run changes nothing.
+
+Run them by hand:
+
+```powershell
+docker compose exec api python -m app.pipeline.catalog_sync --dry-run   # fetch + validate only
+docker compose exec api python -m app.pipeline.catalog_sync
+docker compose exec api python -m app.pipeline.analytics
+```
+
+Exercise data from [wger](https://wger.de) is licensed CC-BY-SA 4.0; imported rows keep `source = "wger"`.
 
 Built-in programs seeded: StrongLifts 5x5 (A/B), Push/Pull/Legs, Upper/Lower, Full-Body 3x (A/B/C).
 
@@ -77,4 +108,9 @@ Built-in programs seeded: StrongLifts 5x5 (A/B), Push/Pull/Legs, Upper/Lower, Fu
 4. Open `https://<your-service>.onrender.com/health`. Free services sleep after 15 idle
    minutes, so the first request after a break takes about a minute.
 
-GitHub Actions (`.github/workflows/backend-ci.yml`) runs the migrations and tests on every push.
+GitHub Actions (`.github/workflows/backend-ci.yml`) runs the migrations and tests on every push,
+and checks that the generated API client is up to date.
+
+The scheduled jobs need the Neon connection string as a repo secret: GitHub repo,
+**Settings > Secrets and variables > Actions > New repository secret**, name `DATABASE_URL`.
+GitHub pauses scheduled workflows after 60 days without commits; re-enable them on the Actions tab.

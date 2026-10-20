@@ -2,9 +2,14 @@ name: Backend CI
 
 on:
   push:
-    paths: ["backend/**", ".github/workflows/backend-ci.yml"]
+    paths:
+      - "backend/**"
+      - "packages/api-client/**"
+      - ".github/workflows/backend-ci.yml"
   pull_request:
-    paths: ["backend/**"]
+    paths:
+      - "backend/**"
+      - "packages/api-client/**"
 
 jobs:
   test:
@@ -37,3 +42,28 @@ jobs:
       - name: Migrations apply cleanly and match the models
         run: alembic upgrade head && alembic check
       - run: pytest
+      - name: API client schema is up to date
+        run: |
+          python -m app.export_openapi /tmp/openapi.json
+          diff -u ../packages/api-client/openapi.json /tmp/openapi.json || {
+            echo "::error::packages/api-client/openapi.json is stale. See packages/api-client/README.md"
+            exit 1
+          }
+
+  api-client:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Generated types match openapi.json
+        run: |
+          npm run api:generate
+          git diff --exit-code packages/api-client/src/schema.d.ts || {
+            echo "::error::Run npm run api:generate and commit the result"
+            exit 1
+          }
+      - run: npm run api:typecheck

@@ -186,6 +186,24 @@ class BodyMetric(Base):
     measurements: Mapped[dict | None] = mapped_column(JSONB)
 
 
+class PipelineRun(Base):
+    """One row per pipeline job run: what it did, how long it took, and whether it failed."""
+
+    __tablename__ = "pipeline_runs"
+    __table_args__ = (
+        CheckConstraint("status IN ('running', 'success', 'failed')", name="status"),
+    )
+
+    id: Mapped[int] = mapped_column(primary_key=True)
+    job: Mapped[str] = mapped_column(String(40), index=True)
+    status: Mapped[str] = mapped_column(String(10), default="running")
+    started_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
+    finished_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))
+    # e.g. {"fetched": 912, "inserted": 40, "updated": 860, "skipped": {"no_english_name": 12}}
+    stats: Mapped[dict | None] = mapped_column(JSONB)
+    error: Mapped[str | None] = mapped_column(Text)
+
+
 class ExerciseStat(Base):
     """Written by the nightly analytics job (week 2); the dashboard reads it."""
 

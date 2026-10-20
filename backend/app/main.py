@@ -4,7 +4,7 @@ from sqlalchemy import text
 
 from app.config import get_settings
 from app.db import engine
-from app.routers import auth, body_metrics, catalog, sessions, templates
+from app.routers import auth, body_metrics, catalog, progress, sessions, templates
 
 app = FastAPI(
     title="FitTrack API",
@@ -25,6 +25,7 @@ app.include_router(catalog.router)
 app.include_router(templates.router)
 app.include_router(sessions.router)
 app.include_router(body_metrics.router)
+app.include_router(progress.router)
 
 
 @app.get("/health", tags=["health"])

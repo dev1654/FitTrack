@@ -8,3 +8,6 @@ email-validator==2.3.0
 psycopg[binary]==3.3.6
 PyJWT==2.15.1
 bcrypt==5.0.0
+# Pipeline jobs
+httpx==0.28.1
+pandas==3.0.6

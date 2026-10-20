@@ -191,6 +191,70 @@ class SessionOut(SessionSummary):
     sets: list[SetOut]
 
 
+# ---------- Progress (last time, stats) ----------
+
+
+class LastSet(ORM):
+    set_number: int
+    reps: int | None
+    weight_kg: float | None
+    duration_seconds: int | None
+    distance_m: float | None
+
+
+class Suggestion(BaseModel):
+    weight_kg: float | None
+    reps: int | None
+    reason: str
+
+
+class LastTimeOut(BaseModel):
+    exercise_id: int
+    last_date: Date | None
+    sets: list[LastSet]
+    suggestion: Suggestion | None
+
+
+class ExerciseStatOut(ORM):
+    date: Date
+    est_1rm_kg: float | None
+    total_volume_kg: float | None
+    is_plateau: bool
+
+
+class WeeklyVolumeOut(BaseModel):
+    week_start: Date
+    muscle_group: str
+    total_volume_kg: float
+
+
+class PersonalRecordOut(BaseModel):
+    exercise_id: int
+    exercise_name: str
+    best_est_1rm_kg: float | None
+    best_est_1rm_date: Date | None
+    heaviest_weight_kg: float | None
+    heaviest_weight_date: Date | None
+
+
+class PlateauOut(BaseModel):
+    exercise_id: int
+    exercise_name: str
+    last_session: Date
+    est_1rm_kg: float | None
+    best_est_1rm_kg: float | None
+
+
+class PipelineRunOut(ORM):
+    id: int
+    job: str
+    status: Literal["running", "success", "failed"]
+    started_at: datetime
+    finished_at: datetime | None
+    stats: dict | None
+    error: str | None
+
+
 # ---------- Body metrics ----------
 
 

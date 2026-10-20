@@ -1,0 +1,35 @@
+name: Analytics (nightly)
+
+# Rebuilds exercise_stats (1RM, volume, plateau flags) in the production database.
+# Needs the repo secret DATABASE_URL (Settings > Secrets and variables > Actions).
+
+on:
+  schedule:
+    - cron: "43 7 * * *" # every day 07:43 UTC (3:43 am Toronto)
+  workflow_dispatch:
+
+concurrency:
+  group: pipeline-analytics
+  cancel-in-progress: false
+
+jobs:
+  analytics:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    defaults:
+      run:
+        working-directory: backend
+    env:
+      DATABASE_URL: ${{ secrets.DATABASE_URL }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: backend/requirements.txt
+      - run: pip install -r requirements.txt
+      - name: Check the secret is set
+        run: test -n "$DATABASE_URL" || { echo "::error::Add the DATABASE_URL repo secret"; exit 1; }
+      - name: Rebuild exercise stats
+        run: python -m app.pipeline.analytics
