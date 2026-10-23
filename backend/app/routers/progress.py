@@ -23,6 +23,8 @@ from app.schemas import (
 router = APIRouter(tags=["progress"])
 
 LOWER_BODY = {"quads", "hamstrings", "glutes"}
+# Deadlifts are often filed under "back" but progress like leg lifts.
+LOWER_BODY_WORDS = ("squat", "deadlift", "leg press", "lunge", "hip thrust")
 
 
 def _fmt(kg: float) -> str:
@@ -44,7 +46,10 @@ def suggest_next(exercise: Exercise, sets: list[SetEntry], target_reps: int | No
         top_sets = [s for s in weighted if float(s.weight_kg) == top]
         goal = target_reps or top_sets[0].reps
         if all(s.reps >= goal for s in top_sets):
-            step = 5.0 if exercise.muscle_group in LOWER_BODY else 2.5
+            lower = exercise.muscle_group in LOWER_BODY or any(
+                w in exercise.name.lower() for w in LOWER_BODY_WORDS
+            )
+            step = 5.0 if lower else 2.5
             return Suggestion(
                 weight_kg=top + step,
                 reps=goal,

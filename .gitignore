@@ -10,6 +10,9 @@ venv/
 .env
 .env.*
 !.env.example
+# Web build settings (public API URLs, no secrets)
+!web/.env.development
+!web/.env.production
 
 # Node / Expo
 node_modules/

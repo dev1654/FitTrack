@@ -18,3 +18,34 @@ services:
         generateValue: true
       - key: CORS_ORIGINS
         value: http://localhost:5173,http://localhost:8081
+      # The web app's Render URL (Render may add a suffix like -ab12 to the name).
+      - key: CORS_ORIGIN_REGEX
+        value: ^https://fittrack-web(-[a-z0-9]+)?\.onrender\.com$
+
+  - type: web
+    name: fittrack-web
+    runtime: static
+    # No rootDir: the build needs the whole npm workspace (web + packages/api-client).
+    buildCommand: npm ci && npm run build -w web
+    staticPublishPath: ./web/dist
+    buildFilter:
+      paths:
+        - web/**
+        - packages/api-client/**
+        - package.json
+        - package-lock.json
+        - .npmrc
+    routes:
+      # Single-page app: every path serves index.html and React Router takes over.
+      - type: rewrite
+        source: /*
+        destination: /index.html
+    headers:
+      - path: /assets/*
+        name: Cache-Control
+        value: public, max-age=31536000, immutable
+    envVars:
+      - key: NODE_VERSION
+        value: "22"
+      - key: VITE_API_URL
+        value: https://fittrack-api-rz44.onrender.com

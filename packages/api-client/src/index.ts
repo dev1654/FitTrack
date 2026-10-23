@@ -22,7 +22,8 @@ export type ApiClientOptions = {
 };
 
 export function createApiClient({ baseUrl, getToken, onUnauthorized }: ApiClientOptions) {
-  const client = createClient<paths>({ baseUrl });
+  // Look fetch up on every call (not once at creation) so tests and polyfills can replace it.
+  const client = createClient<paths>({ baseUrl, fetch: (request) => globalThis.fetch(request) });
   client.use({
     onRequest({ request }) {
       const token = getToken?.();

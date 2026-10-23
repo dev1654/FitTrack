@@ -1,0 +1,29 @@
+name: Web CI
+
+on:
+  push:
+    paths:
+      - "web/**"
+      - "packages/api-client/**"
+      - "package.json"
+      - "package-lock.json"
+      - ".github/workflows/web-ci.yml"
+  pull_request:
+    paths:
+      - "web/**"
+      - "packages/api-client/**"
+
+jobs:
+  web:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Type-check and build
+        run: npm run build -w web
+      - name: Tests
+        run: npm run test -w web

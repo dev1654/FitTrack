@@ -40,6 +40,13 @@ def test_lower_body_steps_up_5kg(client, auth, exercise_ids):
     assert res["suggestion"]["weight_kg"] == 105.0
 
 
+def test_deadlift_steps_up_5kg_though_filed_under_back(client, auth, exercise_ids):
+    deadlift = exercise_ids["deadlift"]
+    _log(client, auth, "2026-10-05", deadlift, [(5, 120)])
+    res = client.get(f"/exercises/{deadlift}/last", params={"target_reps": 5}, headers=auth).json()
+    assert res["suggestion"]["weight_kg"] == 125.0
+
+
 def test_missed_reps_so_repeat_the_weight(client, auth, exercise_ids):
     bench = exercise_ids["bench-press"]
     _log(client, auth, "2026-10-05", bench, [(8, 60), (7, 60), (6, 60)])

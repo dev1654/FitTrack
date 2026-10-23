@@ -8,7 +8,7 @@ a React web dashboard and an Expo mobile app, all sharing one PostgreSQL databas
 | `backend/` | FastAPI API, models, migrations, seed data, tests | Week 1 done |
 | `backend/app/pipeline/` | wger catalog sync + nightly analytics jobs | Week 2 done |
 | `packages/api-client/` | Typed TypeScript client generated from the API schema | Week 2 done |
-| `web/` | React + TypeScript + Vite dashboard | Week 3 |
+| `web/` | React + TypeScript web app: logging, programs, library, progress dashboard | Week 3 done |
 | `mobile/` | Expo (React Native) in-gym logger | Week 4 |
 
 ## Run it locally
@@ -28,6 +28,17 @@ Run the tests (inside the running API container):
 ```powershell
 docker compose exec api pytest
 ```
+
+### The web app (Node 22+)
+
+With the API running, in a second terminal from this folder:
+
+```powershell
+npm install
+npm run web:dev
+```
+
+Open <http://localhost:5173>, create an account and log a workout. See `web/README.md`.
 
 ### Without Docker for the API (Python 3.12+)
 
@@ -99,7 +110,7 @@ Exercise data from [wger](https://wger.de) is licensed CC-BY-SA 4.0; imported ro
 
 Built-in programs seeded: StrongLifts 5x5 (A/B), Push/Pull/Legs, Upper/Lower, Full-Body 3x (A/B/C).
 
-## Deploying (end of week 1)
+## Deploying
 
 1. Create a free Postgres project on [Neon](https://neon.com) and copy its connection string.
 2. Push this repo to GitHub.
@@ -107,9 +118,11 @@ Built-in programs seeded: StrongLifts 5x5 (A/B), Push/Pull/Legs, Upper/Lower, Fu
    paste the Neon connection string as `DATABASE_URL`. Render generates `JWT_SECRET`.
 4. Open `https://<your-service>.onrender.com/health`. Free services sleep after 15 idle
    minutes, so the first request after a break takes about a minute.
+5. The same Blueprint also creates `fittrack-web`, a free static site built from `web/`.
+   The API accepts requests from any `fittrack-web*.onrender.com` address (`CORS_ORIGIN_REGEX`).
 
-GitHub Actions (`.github/workflows/backend-ci.yml`) runs the migrations and tests on every push,
-and checks that the generated API client is up to date.
+GitHub Actions runs on every push: `backend-ci.yml` (migrations, tests, API client up to date)
+and `web-ci.yml` (type-check, build and tests for the web app).
 
 The scheduled jobs need the Neon connection string as a repo secret: GitHub repo,
 **Settings > Secrets and variables > Actions > New repository secret**, name `DATABASE_URL`.

@@ -21,6 +21,9 @@ class Settings(BaseSettings):
     jwt_algorithm: str = "HS256"
     jwt_expire_minutes: int = 60 * 24 * 7
     cors_origins: str = "http://localhost:5173,http://localhost:8081"
+    # Optional pattern for deployed frontends whose exact URL isn't known up front,
+    # e.g. https://fittrack-web(-[a-z0-9]+)?\.onrender\.com
+    cors_origin_regex: str | None = None
 
     @field_validator("database_url")
     @classmethod
